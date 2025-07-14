@@ -1,7 +1,7 @@
 module.exports = {
   // port for the server to listen on
   // on unix-like platforms, this can be the path to a unix socket
-  port: process.env.PORT || 9080,
+  port: process.env.PORT || 19133,
 
   // the unix permissions to use for unix sockets
   // set to -1 to disable permission changing
@@ -12,17 +12,17 @@ module.exports = {
   trustProxy: process.env.TRUST_PROXY === 'true',
 
   // removes IP addresses from logs
-  anonymizeAddresses: process.env.ANONYMIZE_ADDRESSES === 'true',
+  anonymizeAddresses: process.env.ANONYMIZE_ADDRESSES === 'false',
 
   // anonymize generated usernames like "player123456"
-  anonymizeGeneratedUsernames: true,
+  anonymizeGeneratedUsernames: false,
 
   // change this to an object to enable the WebSocket per-message deflate extension
   perMessageDeflate: false,
 
   // If set to a non-zero number, sends will be buffered to this many per second
   // This can significantly improve performance
-  bufferSends: 60,
+  bufferSends: 0,
 
   enableRename: false,
 

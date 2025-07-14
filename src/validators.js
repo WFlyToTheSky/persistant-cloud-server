@@ -6,7 +6,7 @@ const CLOUD_PREFIXES = ['☁ ', ':cloud: '];
 const VARIABLE_NAME_MAX_LENGTH = 1024;
 
 /** The maximum length of a variable's value. */
-const VALUE_MAX_LENGTH = 100000;
+const VALUE_MAX_LENGTH = 99999999999999999999999999;
 
 /** Maximum length of usernames, inclusive. */
 const USERNAME_MAX_LENGTH = 20;
@@ -36,8 +36,8 @@ module.exports.isValidRoomID = function(id) {
  * @returns {boolean}
  */
 module.exports.isValidVariableName = function(name) {
-  if (typeof name !== 'string') return false;
-  if (name.length > VARIABLE_NAME_MAX_LENGTH) return false;
+  // if (typeof name !== 'string') return false;
+  // if (name.length > VARIABLE_NAME_MAX_LENGTH) return false;
   for (const prefix of CLOUD_PREFIXES) {
     if (name === prefix) return false;
     if (name.startsWith(prefix)) return true;
@@ -50,6 +50,7 @@ module.exports.isValidVariableName = function(name) {
  * @returns {boolean}
  */
 module.exports.isValidVariableValue = function(value) {
+/*
   if (typeof value === 'number') {
     // If the value is a number, we don't have to parse it because we already know it's valid.
     // NaN and [-]Infinity are not valid, however.
@@ -88,6 +89,6 @@ module.exports.isValidVariableValue = function(value) {
 
     return true;
   }
-
-  return false;
+*/
+  return true;
 };
