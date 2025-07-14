@@ -1,6 +1,6 @@
-# cloud-server
+# persistent-cloud-server
 
-A cloud data server for Scratch 3. Used by [forkphorus](https://forkphorus.github.io/) and [TurboWarp](https://turbowarp.org/).
+A cloud data server for Scratch 3 with most of the limitations removed.
 
 It uses a protocol very similar to Scratch 3's cloud variable protocol. See doc/protocol.md for further details. It saves cloud variables to json files named after the room in the 'save' directory.
 
@@ -13,17 +13,17 @@ This server does not implement history logs.
 Needs Node.js and npm.
 
 ```
-git clone https://github.com/TurboWarp/cloud-server
-cd cloud-server
+git clone https://github.com/WFlyToTheSky/persistent-cloud-server
+cd persitent-cloud-server
 npm install
 npm start
 ```
 
 By default the server is listening on ws://localhost:19133/. To change the port or enable wss://, read below.
 
-To use a local cloud variable server in forkphorus, you can use the `chost` URL parameter, for example: https://forkphorus.github.io/?chost=ws://localhost:9080/
+To use a local cloud variable server in forkphorus, you can use the `chost` URL parameter, for example: https://forkphorus.github.io/?chost=ws://localhost:19133/
 
-You can do a similar thing in TurboWarp with the `cloud_host` URL parameter: https://turbowarp.org/?cloud_host=ws://localhost:9080/
+You can do a similar thing in TurboWarp with the `cloud_host` URL parameter: https://turbowarp.org/?cloud_host=ws://localhost:19133/
 
 ## Configuration
 
@@ -47,7 +47,7 @@ You can configure logging with the `logging` property of src/config.js. By defau
 
 ### Production setup
 
-cloud-server is not considered production ready since it most of the restrictions are removed so someone could send thousands of packets to the server and overwhelm it.
+persistent-cloud-server is not considered production ready since it most of the restrictions are removed so someone could send thousands of packets to the server and overwhelm it.
 
 If you decide to run it in a production environment you should probably be using a reverse proxy such as nginx or caddy.
 
