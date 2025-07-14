@@ -2,13 +2,11 @@
 
 A cloud data server for Scratch 3. Used by [forkphorus](https://forkphorus.github.io/) and [TurboWarp](https://turbowarp.org/).
 
-It uses a protocol very similar to Scratch 3's cloud variable protocol. See doc/protocol.md for further details.
+It uses a protocol very similar to Scratch 3's cloud variable protocol. See doc/protocol.md for further details. It saves cloud variables to json files named after the room in the 'save' directory.
 
 ## Restrictions
 
-This server does not implement long term variable storage. All data is stored only in memory (never on disk) and are removed promptly when rooms are emptied or the server restarts.
-
-This server also does not implement history logs.
+This server does not implement history logs.
 
 ## Setup
 
@@ -21,7 +19,7 @@ npm install
 npm start
 ```
 
-By default the server is listening on ws://localhost:9080/. To change the port or enable wss://, read below.
+By default the server is listening on ws://localhost:19133/. To change the port or enable wss://, read below.
 
 To use a local cloud variable server in forkphorus, you can use the `chost` URL parameter, for example: https://forkphorus.github.io/?chost=ws://localhost:9080/
 
@@ -49,9 +47,9 @@ You can configure logging with the `logging` property of src/config.js. By defau
 
 ### Production setup
 
-cloud-server is considered production ready as it has been in use in a production environment for months without issue. That said, there is no warranty. If a bug in cloud-server results in you losing millions of dollars, tough luck. (see LICENSE for more details)
+cloud-server is not considered production ready since it most of the restrictions are removed so someone could send thousands of packets to the server and overwhelm it.
 
-You should probably be using a reverse proxy such as nginx or caddy in a production environment.
+If you decide to run it in a production environment you should probably be using a reverse proxy such as nginx or caddy.
 
 In this setup cloud-server should listen on a high port such as 9080 (or even a unix socket), and your proxy will handle HTTP(S) connections and forward requests to the cloud server. You should make sure that the port that cloud-server is listening on is not open.
 
